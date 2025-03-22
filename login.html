@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-dyD12nXpLBVeMx/STzDqaktrTz5/Jp8L4pZ6cWoZpX1UEv6ZggFAsbCZgC5GfQom" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Mulish', sans-serif;
+            color: #0c0c0c;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .login-form-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, .9);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            width: 400px;
+            max-width: 100%;
+        }
+
+        .login-form-container form {
+            padding: 20px;
+        }
+
+        .login-form-container h3 {
+            position: relative;
+            font-weight: bold;
+            color: #44b89d;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-form-container label {
+            display: block;
+            font-size: 1.2rem;
+            color: #34495e; /* Dark Gray Text */
+            margin-bottom: 8px;
+        }
+
+        .login-form-container .input-group {
+            margin-bottom: 15px;
+        }
+
+        .login-form-container .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #3498db; /* Blue Border */
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 8px;
+        }
+
+        .login-form-container .checkbox {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            color: #34495e; /* Dark Gray Text */
+        }
+
+        .login-form-container .checkbox input {
+            margin: 0;
+        }
+
+        .login-form-container .btn {
+            background: #27ae60; /* Dark Green Button */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: block;
+            width: 100%;
+        }
+
+        .login-form-container .btn:hover {
+            background: #218c53; /* Darker Green Hover */
+        }
+
+        .login-form-container .options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #34495e; /* Dark Gray Text */
+        }
+
+        .login-form-container #forgot-password,
+        .login-form-container #create-account,
+        .login-form-container #go-back {
+            color: #3498db; /* Blue Links */
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .login-form-container #forgot-password:hover,
+        .login-form-container #create-account:hover,
+        .login-form-container #go-back:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <title>Login Form</title>
+</head>
+<body>
+
+<div class="login-form-container">
+    <form id="login-form" action="">
+        <h3>Login to Your Library Account</h3>
+
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+        </div>
+
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+
+        <div class="checkbox">
+            <input type="checkbox" id="remember-me" name="remember-me">
+            <label for="remember-me">Remember me</label>
+        </div>
+
+        <button type="submit" class="btn">Sign In</button>
+
+        <div class="options">
+            <a href="#" id="forgot-password">Forgot password?</a>
+            <a href="#" id="create-account">Create an account</a>
+        </div>
+    </form>
+
+    <form id="forgot-password-form" action="" style="display: none;">
+        <!-- Forgot password form content here -->
+        <h3>Forgot Password</h3>
+        <div class="input-group">
+            <label for="forgot-email">Email</label>
+            <input type="email" id="forgot-email" name="forgot-email" placeholder="Enter your email" required>
+        </div>
+        <button type="submit" class="btn">Reset Password</button>
+        <div class="options">
+            <a href="#" id="go-back">Go back</a>
+        </div>
+    </form>
+
+    <form id="create-account-form" action="" style="display: none;">
+        <!-- Create account form content here -->
+        <h3>Create New Account</h3>
+        <div class="input-group">
+            <label for="new-username">Username</label>
+            <input type="text" id="new-username" name="new-username" placeholder="Enter your username" required>
+        </div>
+        <div class="input-group">
+            <label for="new-email">Email</label>
+            <input type="email" id="new-email" name="new-email" placeholder="Enter your email" required>
+        </div>
+        <div class="input-group">
+            <label for="new-password">Password</label>
+            <input type="password" id="new-password" name="new-password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="btn">Create Account</button>
+        <div class="options">
+            <a href="#" id="go-back">Go back</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const loginForm = document.getElementById('login-form');
+        const forgotPasswordForm = document.getElementById('forgot-password-form');
+        const createAccountForm = document.getElementById('create-account-form');
+
+        const forgotPasswordLink = document.getElementById('forgot-password');
+        const createAccountLink = document.getElementById('create-account');
+        const goBackLinks = document.querySelectorAll('#go-back');
+
+        forgotPasswordLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            loginForm.style.display = 'none';
+            createAccountForm.style.display = 'none';
+            forgotPasswordForm.style.display = 'block';
+        });
+
+        createAccountLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            loginForm.style.display = 'none';
+            forgotPasswordForm.style.display = 'none';
+            createAccountForm.style.display = 'block';
+        });
+
+        goBackLinks.forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                loginForm.style.display = 'block';
+                forgotPasswordForm.style.display = 'none';
+                createAccountForm.style.display = 'none';
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
